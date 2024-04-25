@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+{% load component_tags %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- script type="module" src="{% static 'js/stimulus.js' %}"></script-->
+    <!-- script type="module" src="{% static 'js/stimulus_init.js' %}"></script-->
+    <link rel="icon" type="image/x-icon" href="{% static 'electronics-43918.ico' %}">
+    <title>Climate Forge Electrification</title>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  </head>
+  <body class="bg-blue-100">
+    {% block content %}
+    {% endblock content %}
+    <script type="text/javascript" src="{% static 'js/htmx.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/hyperscript.js' %}"></script>
+    <script>
+      document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+      })
+    </script>
+  </body>
+</html>

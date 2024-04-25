@@ -102,11 +102,11 @@ DATABASE_CONNECTION_REPLICA_NAME = "replica"
 
 DATABASES = {
     DATABASE_CONNECTION_DEFAULT_NAME: dj_database_url.config(
-        default="postgres://saleor:saleor@localhost:5432/saleor",
+        default="postgres://cf_saleor:cf_saleor@localhost:5432/saleor_cf?currentSchema=saleor",
         conn_max_age=DB_CONN_MAX_AGE,
     ),
     DATABASE_CONNECTION_REPLICA_NAME: dj_database_url.config(
-        default="postgres://saleor:saleor@localhost:5432/saleor",
+        default="postgres://cf_saleor:cf_saleor@localhost:5432/saleor_cf?currentSchema=saleor",
         # TODO: We need to add read only user to saleor platform,
         # and we need to update docs.
         # default="postgres://saleor_read_only:saleor@localhost:5432/saleor",
@@ -171,7 +171,8 @@ MEDIA_URL: str = os.environ.get("MEDIA_URL", "/media/")
 STATIC_ROOT: str = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL: str = os.environ.get("STATIC_URL", "/static/")
 STATICFILES_DIRS = [
-    ("images", os.path.join(PROJECT_ROOT, "saleor", "static", "images"))
+    os.path.join(PROJECT_ROOT, "components"),
+    os.path.join(PROJECT_ROOT, "saleor", "static", "images")
 ]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -246,6 +247,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.staticfiles",
     "django.contrib.postgres",
+    "django_components",
+    #"django_components.safer_staticfiles",
     "django_celery_beat",
     # Local apps
     "saleor.permission",
@@ -282,6 +285,7 @@ INSTALLED_APPS = [
     "django_countries",
     "django_filters",
     "phonenumber_field",
+    "ui_store",
 ]
 
 ENABLE_DJANGO_EXTENSIONS = get_bool_from_env("ENABLE_DJANGO_EXTENSIONS", False)
