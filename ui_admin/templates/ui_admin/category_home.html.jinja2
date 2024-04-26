@@ -1,0 +1,5 @@
+{% extends "ui_admin/_base.html.jinja2" %}
+{% block content %}
+<div id="category-table" hx-trigger="load" hx-get="/admin/category_list/" hx-target="#category-table">
+</div>
+{% endblock content %}

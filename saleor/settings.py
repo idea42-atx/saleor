@@ -172,7 +172,7 @@ STATIC_ROOT: str = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL: str = os.environ.get("STATIC_URL", "/static/")
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, "components"),
-    os.path.join(PROJECT_ROOT, "saleor", "static", "images")
+    os.path.join(PROJECT_ROOT, "saleor", "static", "images"),
 ]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -248,7 +248,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.postgres",
     "django_components",
-    #"django_components.safer_staticfiles",
+    # "django_components.safer_staticfiles",
     "django_celery_beat",
     # Local apps
     "saleor.permission",
@@ -285,6 +285,7 @@ INSTALLED_APPS = [
     "django_countries",
     "django_filters",
     "phonenumber_field",
+    "ui_admin",
     "ui_store",
 ]
 

@@ -16,6 +16,7 @@ from .product.views import digital_product
 from .thumbnail.views import handle_thumbnail
 
 urlpatterns = [
+    path("admin/", include("ui_admin.urls")),
     path("store/", include("ui_store.urls")),
     re_path(
         r"^graphql/$",

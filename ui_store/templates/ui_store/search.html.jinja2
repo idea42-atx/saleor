@@ -1,13 +1,13 @@
-{% extends "ui_store/_base.html.jinja2" %}
+{% extends "ui_admin/_base.html.jinja2" %}
 {% block content %}
   <div class="w-small w-2/3 mx-auto py-10 text-gray-600">
     <input
       type="text"
       name="search_text"
-      hx-post="/ui_store/search_results/"
+      hx-post="/ui_admin/collection_results/"
       hx-trigger="keyup changed delay:250ms"
       hx-indicator=".htmx-indicator"
-      hx-target="#todo-results"
+      hx-target="#collection-results"
       placeholder="Search"
       class="bg-white h-10 px-5 pr-10 rounded-full text-2xl focus:outline-none"
     >
@@ -21,8 +21,8 @@
         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Completed</th>
       </tr>
     </thead>
-    <tbody id="todo-results">
-      {% include "ui_store/todo_listing.html.jinja2" %}
+    <tbody id="collection-results">
+
     </tbody>
   </table>
 {% endblock content %}
